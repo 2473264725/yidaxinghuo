@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星火映征程：建党历史知识问答</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', 'SimHei', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a1a;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(30, 10, 60, 0.8) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(60, 10, 30, 0.6) 0%, transparent 40%);
+            color: #f0f0f0;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* 动态星空背景 */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 5s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        /* 动态星星背景 */
+        .star-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 90% 30%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 200px 200px, 300px 300px, 400px 400px, 500px 500px, 600px 600px;
+            animation: starMove 100s infinite linear;
+            z-index: -2;
+        }
+        
+        @keyframes starMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100px, -100px); }
+        }
+        
+        /* 动态光效 */
+        .light-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(178, 34, 34, 0.1) 0%, transparent 50%),
+                       radial-gradient(circle at 80% 70%, rgba(139, 0, 0, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: pulseLight 10s infinite alternate;
+        }
+        
+        @keyframes pulseLight {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(30, 30, 50, 0.85);
+            border-radius: 20px;
+            border-left: 6px solid #8B0000;
+            border-right: 6px solid #8B0000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6),
+                        0 0 20px rgba(139, 0, 0, 0.3),
+                        inset 0 0 20px rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #8B0000, #B22222, #8B0000);
+        }
+        
+        .title-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .main-title {
+            font-size: 3.2rem;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8),
+                         0 0 20px rgba(178, 34, 34, 0.5);
+            letter-spacing: 2px;
+            position: relative;
+            font-weight: 700;
+        }
+        
+        .title-accent {
+            display: block;
+            font-size: 1.8rem;
+            color: #ffccaa;
+            margin-top: 10px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .title-accent::before, .title-accent::after {
+            content: '✦';
+            margin: 0 15px;
+            color: #ff9900;
+            animation: sparkle 2s infinite alternate;
+        }
+        
+        @keyframes sparkle {
+            0% { opacity: 0.7; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: #ccccff;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            background: rgba(30, 30, 60, 0.7);
+            border-radius: 10px;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .periods {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .period {
+            padding: 14px 28px;
+            background: rgba(40, 40, 70, 0.9);
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            color: #ddd;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .period:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            border-color: rgba(178, 34, 34, 0.5);
+        }
+        
+        .period.active {
+            background: rgba(60, 0, 0, 0.9);
+            border-color: #B22222;
+            box-shadow: 0 6px 15px rgba(178, 34, 34, 0.3),
+                        inset 0 0 10px rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        .period-1.active {
+            background: rgba(60, 0, 0, 0.9);
+        }
+        
+        .period-2.active {
+            background: rgba(80, 0, 0, 0.9);
+        }
+        
+        .period-3.active {
+            background: rgba(100, 0, 0, 0.9);
+        }
+        
+        .quiz-container {
+            background: rgba(30, 30, 50, 0.85);
+            border-radius: 20px;
+            padding: 35px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6),
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(80, 80, 120, 0.2);
+            display: none;
+            animation: fadeIn 0.5s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .quiz-container.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(80, 80, 120, 0.3);
+            position: relative;
+        }
+        
+        .question-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #8B0000, #B22222);
+        }
+        
+        .question-title {
+            font-size: 1.9rem;
+            color: #ffcc99;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .question-counter {
+            background: rgba(60, 0, 0, 0.9);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(178, 34, 34, 0.3);
+        }
+        
+        .question-text {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+            line-height: 1.8;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            background: rgba(40, 40, 60, 0.5);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #B22222;
+        }
+        
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .answer {
+            padding: 20px 25px;
+            background: rgba(40, 40, 70, 0.8);
+            border-radius: 12px;
+            border-left: 4px solid rgba(100, 100, 150, 0.5);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .answer:hover {
+            background: rgba(50, 50, 90, 0.9);
+            transform: translateX(5px);
+            border-left-color: #B22222;
+        }
+        
+        .answer.selected {
+            background: rgba(40, 60, 100, 0.9);
+            border-left-color: #4169E1;
+        }
+        
+        .answer.correct {
+            background: rgba(0, 60, 40, 0.9);
+            border-left-color: #2E8B57;
+        }
+        
+        .answer.incorrect {
+            background: rgba(60, 0, 0, 0.9);
+            border-left-color: #B22222;
+        }
+        
+        .checkbox-answer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .checkbox-answer input {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+        }
+        
+        .checkbox-label {
+            flex: 1;
+        }
+        
+        .answer-letter {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: rgba(60, 60, 90, 0.9);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            margin-right: 15px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .answer.correct .answer-letter {
+            background: rgba(0, 80, 40, 0.9);
+        }
+        
+        .answer.incorrect .answer-letter {
+            background: rgba(80, 0, 0, 0.9);
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-prev {
+            background: rgba(60, 60, 90, 0.9);
+            color: #ddd;
+        }
+        
+        .btn-prev:hover {
+            background: rgba(80, 80, 110, 0.9);
+        }
+        
+        .btn-next {
+            background: rgba(80, 0, 0, 0.9);
+            color: #fff;
+        }
+        
+        .btn-next:hover {
+            background: rgba(100, 0, 0, 0.9);
+        }
+        
+        .btn-check {
+            background: rgba(0, 60, 40, 0.9);
+            color: #fff;
+        }
+        
+        .btn-check:hover {
+            background: rgba(0, 80, 50, 0.9);
+        }
+        
+        .explanation {
+            background: rgba(40, 40, 60, 0.9);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 6px solid #B22222;
+            display: none;
+        }
+        
+        .explanation.active {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .explanation-title {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .explanation-content {
+            color: #ddd;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .progress-container {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: rgba(60, 60, 90, 0.7);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #8B0000, #B22222);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            text-align: right;
+            margin-top: 8px;
+            font-size: 1rem;
+            color: #aaa;
+        }
+        
+        .result {
+            text-align: center;
+            padding: 50px;
+            background: rgba(30, 30, 50, 0.9);
+            border-radius: 20px;
+            margin-top: 30px;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(80, 80, 120, 0.2);
+        }
+        
+        .result.active {
+            display: block;
+        }
+        
+        .result-icon {
+            font-size: 4.5rem;
+            color: #B22222;
+            margin-bottom: 25px;
+        }
+        
+        .result-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .result-score {
+            font-size: 1.8rem;
+            margin-bottom: 35px;
+            color: #ddd;
+            font-weight: 600;
+        }
+        
+        .result-details {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            background: rgba(40, 40, 60, 0.7);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+        }
+        
+        .result-details h3 {
+            color: #fff;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(80, 80, 120, 0.3);
+            padding-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .result-details li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            color: #ddd;
+            position: relative;
+        }
+        
+        .result-details li::before {
+            content: '★';
+            color: #B22222;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+        
+        .text-input {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            border: 2px solid rgba(100, 100, 150, 0.5);
+            background: rgba(40, 40, 60, 0.8);
+            color: #fff;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+        }
+        
+        .text-input:focus {
+            outline: none;
+            border-color: #B22222;
+            box-shadow: 0 0 10px rgba(178, 34, 34, 0.3);
+        }
+        
+        .additional-question {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px dashed rgba(80, 80, 120, 0.3);
+        }
+        
+        .additional-options {
+            margin-top: 20px;
+        }
+        
+        /* 酷炫粒子效果 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background-color: rgba(178, 34, 34, 0.3);
+            border-radius: 50%;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .main-title {
+                font-size: 2.4rem;
+            }
+            
+            .title-accent {
+                font-size: 1.4rem;
+            }
+            
+            .question-text {
+                font-size: 1.3rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .period {
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .quiz-container {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景效果 -->
+    <div class="star-bg"></div>
+    <div class="light-effect"></div>
+    <div class="stars" id="starsContainer"></div>
+    <div class="particles" id="particlesContainer"></div>
+    
+    <div class="container">
+        <header>
+            <div class="title-wrapper">
+                <h1 class="main-title">星火映征程</h1>
+                <div class="title-accent">建党历史知识问答</div>
+            </div>
+            <p class="subtitle">追寻红色记忆，传承革命精神——从马克思主义传播到上海建党</p>
+            <div class="periods">
+                <div class="period period-1 active" data-period="1">第一轮：时代呼唤</div>
+                <div class="period period-2" data-period="2">第二轮：思想引航</div>
+                <div class="period period-3" data-period="3">第三轮：红色起点</div>
+            </div>
+        </header>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">第1题/共8题</div>
+        </div>
+        
+        <!-- 第一轮：星火初燃 -->
+        <div class="quiz-container active" id="period1">
+            <div class="question-header">
+                <h2 class="question-title">第一轮：时代呼唤——马克思主义传播的背景</h2>
+                <div class="question-counter">题目 <span id="currentQuestion1">1</span>/8</div>
+            </div>
+            
+            <div id="questionContainer1">
+                <!-- 题目会通过JavaScript动态插入 -->
+            </div>
+            
+            <div class="controls">
+                <button class="btn-prev" id="prevBtn1" disabled><i class="fas fa-arrow-left"></i>上一题</button>
+                <button class="btn-check" id="checkBtn1"><i class="fas fa-check-circle"></i>检查答案</button>
+                <button class="btn-next" id="nextBtn1">下一题 <i class="fas fa-arrow-right"></i></button>
+            </div>
+            
+            <div class="explanation" id="explanation1">
+                <div class="explanation-title"><i class="fas fa-fire"></i>答案解析</div>
+                <div class="explanation-content" id="explanationContent1"></div>
+            </div>
+        </div>
+        
+        <!-- 第二轮：思想引航 -->
+        <div class="quiz-container" id="period2">
+            <div class="question-header">
+                <h2 class="question-title">第二轮：思想引航——马克思主义传播的先驱</h2>
+                <div class="question-counter">题目 <span id="currentQuestion2">1</span>/7</div>
+            </div>
+            
+            <div id="questionContainer2">
+                <!-- 题目会通过JavaScript动态插入 -->
+            </div>
+            
+            <div class="controls">
+                <button class="btn-prev" id="prevBtn2" disabled><i class="fas fa-arrow-left"></i>上一题</button>
+                <button class="btn-check" id="checkBtn2"><i class="fas fa-check-circle"></i>检查答案</button>
+                <button class="btn-next" id="nextBtn2">下一题 <i class="fas fa-arrow-right"></i></button>
+            </div>
+            
+            <div class="explanation" id="explanation2">
+                <div class="explanation-title"><i class="fas fa-fire"></i>答案解析</div>
+                <div class="explanation-content" id="explanationContent2"></div>
+            </div>
+        </div>
+        
+        <!-- 第三轮：红色起点 -->
+        <div class="quiz-container" id="period3">
+            <div class="question-header">
+                <h2 class="question-title">第三轮：红色起点——上海为何成为建党之地？</h2>
+                <div class="question-counter">题目 <span id="currentQuestion3">1</span>/1</div>
+            </div>
+            
+            <div id="questionContainer3">
+                <!-- 题目会通过JavaScript动态插入 -->
+            </div>
+            
+            <div class="controls">
+                <button class="btn-prev" id="prevBtn3" disabled><i class="fas fa-arrow-left"></i>返回第二轮</button>
+                <button class="btn-check" id="checkBtn3"><i class="fas fa-check-circle"></i>检查答案</button>
+                <button class="btn-next" id="nextBtn3">查看结果 <i class="fas fa-flag-checkered"></i></button>
+            </div>
+            
+            <div class="explanation" id="explanation3">
+                <div class="explanation-title"><i class="fas fa-fire"></i>答案解析</div>
+                <div class="explanation-content" id="explanationContent3"></div>
+            </div>
+        </div>
+        
+        <!-- 结果页面 -->
+        <div class="result" id="resultContainer">
+            <div class="result-icon"><i class="fas fa-trophy"></i></div>
+            <h2 class="result-title">挑战完成！</h2>
+            <div class="result-score">您的得分：<span id="finalScore">0</span>/16</div>
+            <div class="result-details">
+                <h3>上海建党的历史条件总结</h3>
+                <ul>
+                    <li><strong>政治环境</strong>："一市三治"的特殊格局为进步活动提供了相对宽松的空间</li>
+                    <li><strong>经济基础</strong>：近代中国经济与外贸中心，拥有庞大的工人阶级</li>
+                    <li><strong>交通通讯</strong>：全国交通与通讯枢纽，便于人员往来与思想传播</li>
+                    <li><strong>人口结构</strong>：华洋杂处，外侨社区为国际共产主义活动提供掩护</li>
+                    <li><strong>文化传播</strong>：新文化、新思想传播中心，出版业发达，社会主义书刊繁多</li>
+                    <li><strong>组织准备</strong>：已聚集众多社会主义团体，具备组织与宣传基础</li>
+                </ul>
+                <p style="margin-top: 20px; color: #ffcc99; font-style: italic; font-weight: 600; text-align: center; padding: 15px; background: rgba(40, 40, 60, 0.5); border-radius: 10px;">
+                    ✦ 星星之火，可以燎原 ✦ <br>这些因素共同作用，使上海成为中国共产主义运动的策源地与建党理想之地。
+                </p>
+            </div>
+            <button class="btn-next" id="restartBtn" style="margin-top: 35px; width: 200px; display: inline-block;">
+                <i class="fas fa-redo"></i>重新挑战
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 创建动态星空背景
+        function createStars() {
+            const starsContainer = document.getElementById('starsContainer');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // 随机大小
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // 随机位置
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                
+                // 随机动画延迟
+                const delay = Math.random() * 5;
+                star.style.animationDelay = `${delay}s`;
+                
+                // 随机亮度
+                const opacity = Math.random() * 0.7 + 0.3;
+                star.style.opacity = opacity;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // 创建粒子效果
+        function createParticles() {
+            const particlesContainer = document.getElementById('particlesContainer');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // 随机大小
+                const size = Math.random() * 6 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // 随机位置
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                particle.style.left = `${x}%`;
+                particle.style.top = `${y}%`;
+                
+                // 随机颜色
+                const red = Math.floor(Math.random() * 100 + 100);
+                const alpha = Math.random() * 0.3 + 0.1;
+                particle.style.backgroundColor = `rgba(${red}, 20, 60, ${alpha})`;
+                
+                // 动画
+                const duration = Math.random() * 20 + 10;
+                particle.style.animation = `float ${duration}s infinite linear`;
+                
+                // 添加到页面
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // 添加漂浮动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0% {
+                    transform: translate(0, 0) rotate(0deg);
+                    opacity: 0.2;
+                }
+                25% {
+                    transform: translate(${Math.random()*40-20}px, ${Math.random()*40-20}px) rotate(90deg);
+                    opacity: 0.5;
+                }
+                50% {
+                    transform: translate(${Math.random()*40-20}px, ${Math.random()*40-20}px) rotate(180deg);
+                    opacity: 0.8;
+                }
+                75% {
+                    transform: translate(${Math.random()*40-20}px, ${Math.random()*40-20}px) rotate(270deg);
+                    opacity: 0.5;
+                }
+                100% {
+                    transform: translate(0, 0) rotate(360deg);
+                    opacity: 0.2;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // 题目数据保持不变
+        const quizData = {
+            period1: [
+                {
+                    id: 1,
+                    type: 'text',
+                    question: '陈独秀创办的、对新文化运动影响巨大的杂志叫什么名字？',
+                    answers: ['《新青年》'],
+                    correctAnswer: '《新青年》',
+                    explanation: '<p><strong>详细解析：</strong></p><p>《新青年》是陈独秀于1915年9月15日在上海创办的月刊，原名《青年杂志》，从第二卷起改名为《新青年》。</p><p>《新青年》是新文化运动的主要阵地和核心刊物，它高举"民主"与"科学"两面大旗，猛烈抨击封建专制思想和旧道德、旧文化，提倡新思想、新道德、新文化。</p><p>该杂志发表了大量有影响力的文章，如陈独秀的《敬告青年》、李大钊的《青春》、胡适的《文学改良刍议》、鲁迅的《狂人日记》等，对推动中国思想解放和文化变革起到了不可替代的作用。</p><p>1919年后，《新青年》逐渐成为宣传马克思主义的重要阵地，为中国共产党成立奠定了思想基础。</p>'
+                },
+                {
+                    id: 2,
+                    type: 'textWithAdditional',
+                    question: '新文化运动提出的两个最重要的口号是什么？',
+                    correctAnswer: '民主与科学',
+                    additionalQuestion: '代表的是什么阶级的思想？',
+                    additionalOptions: [
+                        'A.地主阶级',
+                        'B.资产阶级', 
+                        'C.工人阶级',
+                        'D.农民阶级'
+                    ],
+                    additionalCorrect: 'B.资产阶级',
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>1. 口号内容：</strong>新文化运动提出的两个最重要口号是"民主"（德先生，Democracy）与"科学"（赛先生，Science）。</p><p><strong>2. 民主的含义：</strong>这里的民主主要指资产阶级民主政治，反对封建专制和军阀独裁，提倡个性解放、人格独立和思想自由。</p><p><strong>3. 科学的含义：</strong>这里的科学不仅指自然科学知识，更指科学精神、科学方法和理性思维，反对迷信、盲从和武断。</p><p><strong>4. 代表的阶级：</strong>新文化运动主要代表了中国新兴资产阶级和小资产阶级知识分子的思想诉求。他们希望在中国建立资产阶级民主制度，发展资本主义经济和文化，使中国走上现代化道路。</p><p><strong>5. 历史局限性：</strong>新文化运动前期的思想属于资产阶级旧民主主义范畴，虽然对封建思想进行了猛烈批判，但未能找到改造中国的正确道路。直到五四运动后，马克思主义的传播才为中国革命指明了新方向。</p>'
+                },
+                {
+                    id: 3,
+                    type: 'text',
+                    question: '一战结束后，中国作为战胜国却在巴黎和会上遭遇外交失败（山东权益被转让给日本），这一事件直接引发了什么爱国运动？',
+                    answers: ['五四运动'],
+                    correctAnswer: '五四运动',
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>1. 历史背景：</strong>第一次世界大战结束后，1919年1月，战胜国在法国巴黎召开"和平会议"。中国作为战胜国之一，派代表参会，提出取消"二十一条"、收回山东权益等正当要求。</p><p><strong>2. 外交失败：</strong>巴黎和会不顾中国的正当要求，决定将德国在山东的一切权益转让给日本。这一消息传回国内，举国震惊，国人"公理战胜强权"的幻想彻底破灭。</p><p><strong>3. 运动爆发：</strong>1919年5月4日，北京13所大学学校的3000多名学生在天安门前集会，高呼"外争主权，内除国贼"、"取消二十一条"、"还我青岛"等口号，举行示威游行，五四运动由此爆发。</p><p><strong>4. 运动发展：</strong>运动迅速从北京扩展到全国，从学生扩展到工人、商人等各个阶层。6月5日，上海工人举行政治大罢工，标志着中国工人阶级开始以独立的政治力量登上历史舞台。</p><p><strong>5. 历史意义：</strong>五四运动是一次彻底的反帝反封建的爱国运动，是中国新民主主义革命的开端，促进了马克思主义在中国的传播，为中国共产党的成立做了思想上和干部上的准备。</p>'
+                },
+                {
+                    id: 4,
+                    type: 'text',
+                    question: '五四运动中，中国哪个阶级作为独立的政治力量登上历史舞台？',
+                    answers: ['工人阶级'],
+                    correctAnswer: '工人阶级',
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>1. 工人阶级的参与：</strong>五四运动初期以学生为主力，但自1919年6月5日起，上海工人举行大规模罢工，声援学生爱国运动。随后，北京、唐山、汉口、南京、长沙等地的工人也相继罢工，显示了工人阶级的巨大力量。</p><p><strong>2. 独立政治力量的形成：</strong>与以往的自发经济斗争不同，五四运动中的工人罢工具有明确的政治目的——反对帝国主义侵略和北洋军阀政府的卖国行径。这表明中国工人阶级开始以独立的政治力量登上历史舞台。</p><p><strong>3. 阶级特点：</strong>中国工人阶级虽然人数不多，但具有独特的优点：深受帝国主义、封建主义和资本主义三重压迫，革命性最坚决、最彻底；主要集中在沿海沿江大城市和铁路、矿山等大型企业，便于组织和动员；与农民有着天然联系，便于结成工农联盟。</p><p><strong>4. 历史意义：</strong>工人阶级登上政治舞台，为中国共产党的成立奠定了阶级基础。从此，中国革命有了新的领导力量，从旧民主主义革命转变为新民主主义革命。</p>'
+                },
+                {
+                    id: 5,
+                    type: 'text',
+                    question: '1919年，《新青年》出版了马克思主义研究专号，刊载了李大钊的文章叫什么？',
+                    answers: ['《我的马克思主义观》'],
+                    correctAnswer: '《我的马克思主义观》',
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>1. 文章发表：</strong>1919年，李大钊在《新青年》第6卷第5号、第6号（即"马克思主义研究专号"）上发表了长篇论文《我的马克思主义观》。</p><p><strong>2. 内容概要：</strong>这篇文章系统地介绍了马克思主义的三个组成部分：唯物史观、政治经济学和科学社会主义。文章详细阐述了马克思主义的剩余价值学说、阶级斗争理论和社会发展规律等核心观点。</p><p><strong>3. 历史地位：</strong>这是中国最早系统介绍马克思主义理论的文章之一，对马克思主义在中国的传播起到了开创性作用。它标志着李大钊已经成为中国最早的马克思主义者。</p><p><strong>4. 历史影响：</strong>《我的马克思主义观》的发表，使更多中国先进知识分子开始了解和接受马克思主义，为五四运动后马克思主义的广泛传播和中国共产党的建立奠定了重要的理论基础。</p><p><strong>5. 李大钊的贡献：</strong>李大钊不仅撰写文章宣传马克思主义，还在北京大学组织"马克思学说研究会"，培养了中国第一批马克思主义者，为中国共产党的创建做出了不可磨灭的贡献。</p>'
+                },
+                {
+                    id: 6,
+                    type: 'multiple',
+                    question: '五四运动前，中国历次救亡图存运动未能成功改变国家命运，原因包括哪些？',
+                    options: [
+                        'A. 未能广泛发动人民群众',
+                        'B. 对帝国主义存在幻想',
+                        'C. 缺乏科学的理论指导',
+                        'D. 封建守旧势力太强大',
+                        'E. 民族资产阶级力量软弱'
+                    ],
+                    correctAnswers: ['A', 'B', 'C', 'D', 'E'],
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>A. 未能广泛发动人民群众：</strong>从太平天国运动到辛亥革命，这些运动要么局限于特定阶层（如农民、会党、新军），要么依靠少数精英，未能真正发动和依靠广大人民群众的力量。</p><p><strong>B. 对帝国主义存在幻想：</strong>许多运动领导人对帝国主义本质认识不清。如太平天国希望得到西方列强支持；义和团盲目排外；辛亥革命希望得到列强承认；甚至新文化运动初期也幻想通过效仿西方来救中国。</p><p><strong>C. 缺乏科学的理论指导：</strong>这些运动缺乏科学的世界观和方法论指导。太平天国的拜上帝教带有浓厚宗教色彩；洋务运动"中体西用"思想保守；维新变法依靠君主立宪；辛亥革命的三民主义未能彻底解决中国问题。</p><p><strong>D. 封建守旧势力太强大：</strong>中国封建势力根深蒂固，与帝国主义勾结，形成了强大的反动同盟。任何变革都遭到顽固势力的强烈抵制和反扑。</p><p><strong>E. 民族资产阶级力量软弱：</strong>中国民族资本主义发展不充分，民族资产阶级具有先天的软弱性和妥协性，既想反帝反封建，又不敢彻底革命，常常在关键时刻动摇妥协。</p><p><strong>总结：</strong>正是这些根本原因，使得五四运动前的历次救亡图存运动最终都未能彻底改变中国半殖民地半封建的社会性质，未能实现民族独立和人民解放。</p>'
+                },
+                {
+                    id: 7,
+                    type: 'multiple',
+                    question: '五四运动取得历史性胜利，其原因包括？',
+                    options: [
+                        'A. 工人阶级成为运动主力',
+                        'B. 青年学生发挥了先锋作用',
+                        'C. 运动得到北洋军阀政府的默许与支持',
+                        'D. 新文化运动前期奠定的思想解放基础',
+                        'E. 运动提出了明确的反帝反封建口号'
+                    ],
+                    correctAnswers: ['A', 'B', 'D', 'E'],
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>A. 工人阶级成为运动主力：</strong>上海等地的工人举行政治大罢工，使五四运动从学生运动发展为有工人阶级、小资产阶级和民族资产阶级参加的全国范围的革命运动，显示了强大的力量。</p><p><strong>B. 青年学生发挥了先锋作用：</strong>北京学生率先发动，全国学生积极响应，他们富有爱国热情和牺牲精神，在运动中起到了先锋和桥梁作用。</p><p><strong>D. 新文化运动前期奠定的思想解放基础：</strong>新文化运动批判封建礼教，提倡民主科学，使人们思想得到空前解放，为接受新思想、投身爱国运动创造了条件。</p><p><strong>E. 运动提出了明确的反帝反封建口号：</strong>"外争主权，内除国贼"等口号明确提出了反帝反封建的目标，反映了中国人民的根本要求，得到了广泛响应。</p><p><strong>C选项错误的原因：</strong>北洋军阀政府并未默许或支持五四运动，相反，他们最初镇压学生运动，逮捕学生代表。只是在群众运动的强大压力下，才被迫释放被捕学生，罢免曹汝霖、章宗祥、陆宗舆三个卖国贼的职务，拒绝在巴黎和约上签字。</p><p><strong>历史意义：</strong>五四运动的胜利，显示了中国人民特别是工人阶级的伟大力量，促进了马克思主义在中国的传播及其与中国工人运动的结合，为中国共产党的成立做了思想上和干部上的准备。</p>'
+                },
+                {
+                    id: 8,
+                    type: 'multiple',
+                    question: '陈独秀从资产阶级民主转向马克思主义的原因包括：',
+                    options: [
+                        'A. 五四运动的影响',
+                        'B. 十月革命的启示',
+                        'C. 民族危机的加深',
+                        'D. 对西方资本主义的失望',
+                        'E. 个人政治野心'
+                    ],
+                    correctAnswers: ['A', 'B', 'C', 'D'],
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>A. 五四运动的影响：</strong>五四运动使陈独秀看到了人民群众特别是工人阶级的伟大力量。他认识到，要改造中国，必须依靠广大民众，而不仅仅是少数知识分子。</p><p><strong>B. 十月革命的启示：</strong>俄国十月革命的胜利，使陈独秀看到了马克思主义指导下的社会主义革命的成功范例。他开始研究十月革命的经验和马克思主义理论。</p><p><strong>C. 民族危机的加深：</strong>巴黎和会的外交失败，使陈独秀彻底放弃了对帝国主义的幻想。他认识到，依靠西方资本主义国家不可能实现中国的独立和富强。</p><p><strong>D. 对西方资本主义的失望：</strong>第一次世界大战暴露了西方资本主义制度的深刻矛盾和各种弊端，使陈独秀对西方资本主义民主制度产生怀疑和失望。</p><p><strong>E选项错误的原因：</strong>陈独秀的思想转变是基于对国家前途命运的深刻思考和对救国道路的积极探索，而不是出于个人政治野心。他作为新文化运动的领袖和五四运动的总司令，早已享有崇高声望，转向马克思主义是他爱国情怀和探索精神的体现。</p><p><strong>转变过程：</strong>1919年五四运动后，陈独秀开始接受马克思主义。1920年，他在上海成立马克思主义研究会，同年8月成立上海共产党早期组织，成为中国共产党主要创始人之一。</p>'
+                }
+            ],
+            period2: [
+                {
+                    id: 1,
+                    type: 'text',
+                    question: '在中华大地上第一次高高举起马克思主义旗帜的人是？',
+                    answers: ['李大钊'],
+                    correctAnswer: '李大钊',
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>1. 先驱地位：</strong>李大钊是中国最早的马克思主义者，是第一个在中国系统宣传马克思主义的革命家、思想家。</p><p><strong>2. 历史贡献：</strong>1918年，他先后发表《法俄革命之比较观》、《庶民的胜利》、《布尔什维主义的胜利》等文章，热情讴歌十月革命，率先在中国宣传马克思主义。</p><p><strong>3. 理论贡献：</strong>1919年，他发表《我的马克思主义观》，系统介绍马克思主义理论，成为中国最早系统传播马克思主义的代表作。</p><p><strong>4. 实践活动：</strong>他在北京大学组织"马克思学说研究会"，培养了中国第一批马克思主义者；推动马克思主义与工人运动相结合；参与创建中国共产党。</p><p><strong>5. 历史评价：</strong>李大钊被誉为"中国马克思主义之父"，他的开拓性工作为马克思主义在中国的传播和中国共产党的建立奠定了重要基础。他于1927年被军阀张作霖杀害，为共产主义事业献出了生命。</p>'
+                },
+                {
+                    id: 2,
+                    type: 'single',
+                    question: '李大钊在《法俄革命之比较观》中认为中国革命应借鉴：',
+                    options: [
+                        'A. 法国大革命经验',
+                        'B. 美国独立战争经验',
+                        'C. 俄国十月革命经验',
+                        'D. 英国光荣革命经验'
+                    ],
+                    correctAnswer: 'C. 俄国十月革命经验',
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>1. 文章背景：</strong>《法俄革命之比较观》是李大钊于1918年7月发表的文章，是中国最早论述十月革命意义的文献之一。</p><p><strong>2. 核心观点：</strong>文章比较了法国大革命和俄国十月革命，指出两者性质根本不同：法国大革命是资产阶级革命，十月革命是无产阶级社会主义革命。</p><p><strong>3. 历史判断：</strong>李大钊认为，20世纪的世界潮流已经发生变化，社会主义革命成为时代主流。中国革命不应再走西方资产阶级革命的老路，而应借鉴俄国十月革命的经验。</p><p><strong>4. 重要意义：</strong>这篇文章表明李大钊已经认识到十月革命的划时代意义，开始探索中国革命的新道路，是他从民主主义者向马克思主义者转变的重要标志。</p><p><strong>5. 历史影响：</strong>这一观点对当时中国先进分子产生了重要影响，促使他们重新思考中国革命的出路，为马克思主义在中国的传播创造了条件。</p>'
+                },
+                {
+                    id: 3,
+                    type: 'single',
+                    question: '李大钊在《庶民的胜利》中认为一战真正胜利者是"庶民"，这里的"庶民"主要指：',
+                    options: [
+                        'A. 资产阶级',
+                        'B. 知识分子阶层',
+                        'C. 世界劳工阶级/无产阶级',
+                        'D. 农民阶级'
+                    ],
+                    correctAnswer: 'C. 世界劳工阶级/无产阶级',
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>1. 文章背景：</strong>《庶民的胜利》是李大钊于1918年11月在天安门演讲中的讲演稿，后发表在《新青年》上，是为庆祝第一次世界大战结束而作。</p><p><strong>2. "庶民"的含义：</strong>这里的"庶民"不是传统意义上的平民百姓，而是特指世界劳工阶级，即无产阶级。李大钊用"庶民"一词，既符合中国传统文化表达，又准确传达了马克思主义的阶级概念。</p><p><strong>3. 核心观点：</strong>李大钊认为，一战的真正胜利不是协约国战胜同盟国，而是"庶民的胜利"、"劳工主义的胜利"、"社会主义的胜利"。他看到了世界大战背后阶级斗争的实质。</p><p><strong>4. 历史意义：</strong>这篇文章突破了当时主流舆论对一战性质的认识，从马克思主义阶级观点分析国际形势，标志着李大钊已经开始运用马克思主义观点观察世界。</p><p><strong>5. 现实启示：</strong>文章鼓舞了中国先进分子，使他们看到了劳动人民的力量和社会主义的前景，增强了通过社会主义道路改造中国的信心。</p>'
+                },
+                {
+                    id: 4,
+                    type: 'textWithAdditional',
+                    question: '李大钊在五四运动期间发表的文章中，最著名的一句话是"试看将来的环球，必是什么的世界"？',
+                    correctAnswer: '赤旗的世界',
+                    additionalQuestion: '"赤旗"象征：',
+                    additionalOptions: ['A.法国大革命', 'B.美国独立', 'C.社会主义革命胜利', 'D.宗教复兴'],
+                    additionalCorrect: 'C.社会主义革命胜利',
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>1. 名句出处：</strong>这句话出自李大钊1918年发表的《布尔什维主义的胜利》一文，原文是："试看将来的环球，必是赤旗的世界！"</p><p><strong>2. "赤旗"的象征：</strong>"赤旗"即红旗，是社会主义和共产主义运动的象征。在文中特指布尔什维克党的旗帜，象征着社会主义革命胜利和无产阶级专政。</p><p><strong>3. 历史背景：</strong>这句话写于俄国十月革命胜利后不久，表达了李大钊对社会主义革命在全球胜利的坚定信念和乐观预言。</p><p><strong>4. 理论意义：</strong>这句话体现了马克思主义关于人类社会发展规律的观点：资本主义必然灭亡，社会主义必然胜利。这是历史发展的必然趋势。</p><p><strong>5. 现实影响：</strong>这句充满激情和信心的预言，鼓舞了无数中国先进分子投身社会主义事业，坚定了他们走俄国十月革命道路的决心。</p><p><strong>6. 历史验证：</strong>20世纪世界社会主义运动的发展，特别是中国革命和建设的成功，部分验证了李大钊的这一预言。这句话至今仍然是激励共产主义者的经典名言。</p>'
+                },
+                {
+                    id: 5,
+                    type: 'truefalse',
+                    question: '判断题：李大钊的《我的马克思主义观》是中国最早系统介绍马克思主义的文章之一。',
+                    correctAnswer: true,
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>1. 文章地位：</strong>这个判断是正确的。《我的马克思主义观》确实是"中国最早系统介绍马克思主义的文章之一"。</p><p><strong>2. "最早"的含义：</strong>在李大钊之前，虽然已有零星的马克思主义介绍，如朱执信在1906年翻译过《共产党宣言》部分内容，但都不够系统、全面。</p><p><strong>3. "系统"的体现：</strong>《我的马克思主义观》长达2.6万字，分上下两篇，系统介绍了马克思主义的三个组成部分（唯物史观、政治经济学、科学社会主义），涵盖了剩余价值学说、阶级斗争理论、无产阶级革命和专政理论等核心内容。</p><p><strong>4. 历史意义：</strong>这篇文章的发表，标志着马克思主义在中国进入系统传播阶段，使中国先进分子第一次能够比较全面地了解马克思主义理论体系。</p><p><strong>5. 影响范围：</strong>文章在《新青年》发表后，产生了广泛影响，被各地进步刊物转载，成为许多共产主义小组的学习材料，为中国共产党的成立奠定了重要理论基础。</p><p><strong>结论：</strong>李大钊的《我的马克思主义观》在中国马克思主义传播史上具有里程碑意义，是当之无愧的最早系统介绍马克思主义的文章之一。</p>'
+                },
+                {
+                    id: 6,
+                    type: 'multiple',
+                    question: '李大钊传播马克思主义的开创性工作包括：',
+                    options: [
+                        'A. 最早系统介绍马克思主义理论',
+                        'B. 建立马克思学说研究会',
+                        'C. 将马克思主义与工人运动结合',
+                        'D. 培养马克思主义青年骨干',
+                        'E. 翻译《共产党宣言》全本'
+                    ],
+                    correctAnswers: ['A', 'B', 'C', 'D'],
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>A. 最早系统介绍马克思主义理论：</strong>通过《我的马克思主义观》等文章，李大钊第一个在中国系统介绍了马克思主义的理论体系。</p><p><strong>B. 建立马克思学说研究会：</strong>1920年3月，李大钊在北京大学组织成立了"马克思学说研究会"，这是中国第一个研究和宣传马克思主义的团体。</p><p><strong>C. 将马克思主义与工人运动结合：</strong>李大钊重视工人运动，发表《现代青年活动的方向》等文章指导工人斗争，推动马克思主义与工人运动相结合。</p><p><strong>D. 培养马克思主义青年骨干：</strong>李大钊在北京大学任教期间，影响和培养了一大批进步青年，如毛泽东、邓中夏、高君宇等，他们后来都成为中国革命的骨干。</p><p><strong>E选项错误的原因：</strong>翻译《共产党宣言》全本的是陈望道，而不是李大钊。陈望道于1920年8月在上海出版了《共产党宣言》第一个中文全译本。</p><p><strong>综合评价：</strong>李大钊是中国马克思主义传播的先驱和奠基人，他的开创性工作为中国共产党的创建准备了思想条件、组织条件和干部条件，被毛泽东誉为"真正的老师"。</p>'
+                },
+                {
+                    id: 7,
+                    type: 'single',
+                    question: '请将以下事件按时间排序：<br>①李大钊在北京大学成立马克思学说研究会<br>②中共发起组在上海创办《劳动界》周刊向工人宣传马克思主义<br>③李大钊发表《庶民的胜利》讴歌十月革命<br>④陈独秀、李汉俊等人成立马克思主义研究会<br>⑤李大钊发表《我的马克思主义观》',
+                    options: [
+                        'A. ③⑤①④②',
+                        'B. ③⑤④①②',
+                        'C. ⑤③④①②',
+                        'D. ⑤③①②④'
+                    ],
+                    correctAnswer: 'A. ③⑤①④②',
+                    explanation: '<p><strong>详细解析：</strong></p><p><strong>正确时间顺序和史实依据：</strong></p><p><strong>③李大钊发表《庶民的胜利》讴歌十月革命：</strong>1918年11月，李大钊发表《庶民的胜利》，热情讴歌十月革命。</p><p><strong>⑤李大钊发表《我的马克思主义观》：</strong>1919年，李大钊在《新青年》发表《我的马克思主义观》，系统介绍马克思主义。</p><p><strong>①李大钊在北京大学成立马克思学说研究会：</strong>1920年3月，李大钊在北京大学秘密成立马克思学说研究会。</p><p><strong>④陈独秀、李汉俊等人成立马克思主义研究会：</strong>1920年5月，陈独秀在上海成立马克思主义研究会。</p><p><strong>②中共发起组在上海创办《劳动界》周刊向工人宣传马克思主义：</strong>1920年8月，上海共产党早期组织创办《劳动界》周刊，这是中国第一个专门面向工人的马克思主义刊物。</p><p><strong>历史脉络：</strong>这个顺序反映了马克思主义在中国传播的基本脉络：从理论介绍（③⑤）到组织建立（①④），再到与工人运动相结合（②），最终为中国共产党的成立做好了准备。</p>'
+                }
+            ],
+            period3: [
+                {
+                    id: 1,
+                    type: 'multiple',
+                    question: '上海为什么能够成为中国共产党诞生地？',
+                    options: [
+                        'A. 上海具有"一市三治"的特殊政治格局，租界为进步活动提供了相对宽松的空间。',
+                        'B. 上海是近代中国的经济与外贸中心，拥有庞大的工人阶级，为革命提供了阶级基础。',
+                        'C. 上海是全国交通与通讯枢纽，便于人员往来、思想传播和组织联络。',
+                        'D. 上海人口多元、华洋杂处，外侨社区为国际共产主义活动提供了掩护与条件。',
+                        'E. 上海是新文化、新思想传播的中心，出版业发达，社会主义书刊种类繁多。',
+                        'F. 上海已聚集了众多社会主义团体，具备一定的组织与宣传基础。'
+                    ],
+                    correctAnswers: ['A', 'B', 'C', 'D', 'E', 'F'],
+                    explanation: `<p><strong>详细解析：</strong></p>
+                    <p>根据历史材料分析，上海之所以成为中国共产党的诞生地，主要可归纳为以下六个方面的原因：</p>
+                    
+                    <p><strong>一、特殊的政治格局与治理环境</strong></p>
+                    <p>上海存在公共租界、法租界与华界"一市三治"的局面，行政管辖不统一，权力分散。租界享有一定的"治外法权"，为进步组织提供了相对宽松的活动空间，尤其便于开展秘密工作与宣传。俄共（布）等外国共产主义力量可借助外侨身份（如俄侨开设的餐厅）进行掩护。</p>
+                    
+                    <p><strong>二、经济繁荣与外贸中心地位</strong></p>
+                    <p>上海是当时中国的经济中心，1912–1922年进出口贸易净值从3.69亿关两增长至6.26亿关两，占全国40%以上。洋行林立，商业发达，资本集中，工人阶级也随之壮大，为工人运动与马克思主义传播提供了社会经济基础。</p>
+                    
+                    <p><strong>三、交通与信息枢纽优势</strong></p>
+                    <p>上海是全国的交通运输、邮政电信枢纽，铁路、轮船四通八达，电报、邮政联通国内外。信息流通迅速，便于国内外思想交流、人员往来和组织联络。</p>
+                    
+                    <p><strong>四、多元人口与国际化社区</strong></p>
+                    <p>上海汇聚各国侨民，形成"华洋混处、五方杂居"的多元社会结构。外侨社区为国际共产主义运动提供了掩护与交流平台，如俄侨为俄共（布）在沪活动创造条件。</p>
+                    
+                    <p><strong>五、文化与思想传播的中心</strong></p>
+                    <p>上海是"西学东渐"的窗口，新闻、出版、教育事业发达（如商务印书馆、福州路书局林立）。出版机构众多，社会主义性质的书刊达三百多种，为马克思主义与进步思想的传播创造了条件。</p>
+                    
+                    <p><strong>六、社会主义团体活跃与组织基础</strong></p>
+                    <p>上海聚集了大量社会主义团体，可公开或半公开进行宣传。1920年代已有多份社会主义报刊、团体活动频繁，形成了一定的组织网络与群众基础。1920年刘谦向俄共（布）的报告指出："上海是中国社会主义者的大本营，在这里可以公开的进行宣传。上海有许多社会主义性质的团体，出版三百多种书刊（报纸、杂志和书籍），均为社会主义性质。"</p>
+                    
+                    <p><strong>总结：</strong>上海建党是<strong>政治环境、经济地位、交通条件、人口结构、文化传播和组织基础</strong>六大因素共同作用的结果。这座城市既具备现代工业与工人阶级的土壤，又有相对自由的舆论与组织空间，同时连接国内外进步力量，使其成为中国共产主义运动的策源地与建党理想之地。</p>`
+                }
+            ]
+        };
+
+        // 当前状态
+        let currentPeriod = 1;
+        let currentQuestions = {
+            1: 0,
+            2: 0,
+            3: 0
+        };
+        let userAnswers = {
+            1: {},
+            2: {},
+            3: {}
+        };
+        let scores = {
+            1: 0,
+            2: 0,
+            3: 0
+        };
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 创建动态背景
+            createStars();
+            createParticles();
+            
+            // 设置轮次切换
+            document.querySelectorAll('.period').forEach(period => {
+                period.addEventListener('click', function() {
+                    const periodId = parseInt(this.dataset.period);
+                    switchPeriod(periodId);
+                });
+            });
+
+            // 初始化第一轮的题目
+            loadQuestion(1, 0);
+            
+            // 设置按钮事件
+            setupEventListeners();
+            
+            // 更新进度条
+            updateProgress();
+        });
+
+        // 切换轮次
+        function switchPeriod(periodId) {
+            // 更新活动状态
+            document.querySelectorAll('.period').forEach(p => p.classList.remove('active'));
+            document.querySelector(`.period[data-period="${periodId}"]`).classList.add('active');
+            
+            // 隐藏所有quiz容器
+            document.querySelectorAll('.quiz-container').forEach(container => {
+                container.classList.remove('active');
+            });
+            
+            // 显示目标quiz容器
+            document.getElementById(`period${periodId}`).classList.add('active');
+            
+            // 更新当前轮次
+            currentPeriod = periodId;
+            
+            // 加载当前题目
+            loadQuestion(periodId, currentQuestions[periodId]);
+            
+            // 更新进度条
+            updateProgress();
+        }
+
+        // 加载题目
+        function loadQuestion(periodId, questionIndex) {
+            const periodData = quizData[`period${periodId}`];
+            const question = periodData[questionIndex];
+            const container = document.getElementById(`questionContainer${periodId}`);
+            const explanation = document.getElementById(`explanation${periodId}`);
+            const explanationContent = document.getElementById(`explanationContent${periodId}`);
+            
+            // 隐藏解析
+            explanation.classList.remove('active');
+            
+            // 清空容器
+            container.innerHTML = '';
+            
+            // 更新题目计数器
+            document.getElementById(`currentQuestion${periodId}`).textContent = questionIndex + 1;
+            
+            // 创建题目文本
+            const questionText = document.createElement('div');
+            questionText.className = 'question-text';
+            questionText.innerHTML = `<strong>${question.id}.</strong> ${question.question}`;
+            container.appendChild(questionText);
+            
+            // 根据题目类型创建答案区域
+            if (question.type === 'text') {
+                // 文本输入题
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'text-input';
+                input.placeholder = '请输入答案';
+                input.value = userAnswers[periodId][questionIndex] || '';
+                
+                input.addEventListener('input', function() {
+                    userAnswers[periodId][questionIndex] = this.value.trim();
+                });
+                
+                container.appendChild(input);
+                
+            } else if (question.type === 'textWithAdditional') {
+                // 带附加选择题的填空题
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'text-input';
+                input.placeholder = '请输入答案';
+                input.value = userAnswers[periodId][questionIndex] || '';
+                
+                input.addEventListener('input', function() {
+                    userAnswers[periodId][questionIndex] = this.value.trim();
+                });
+                
+                container.appendChild(input);
+                
+                // 添加附加问题
+                const additionalDiv = document.createElement('div');
+                additionalDiv.className = 'additional-question';
+                
+                const additionalText = document.createElement('div');
+                additionalText.className = 'question-text';
+                additionalText.innerHTML = `<strong>附加：</strong>${question.additionalQuestion}`;
+                additionalDiv.appendChild(additionalText);
+                
+                // 添加附加选项
+                const additionalOptions = document.createElement('div');
+                additionalOptions.className = 'answers additional-options';
+                
+                question.additionalOptions.forEach((option, idx) => {
+                    const answerDiv = document.createElement('div');
+                    answerDiv.className = 'answer';
+                    if (userAnswers[periodId][`${questionIndex}_additional`] === option) {
+                        answerDiv.classList.add('selected');
+                    }
+                    
+                    answerDiv.innerHTML = `
+                        <span class="answer-letter">${String.fromCharCode(65 + idx)}</span>
+                        <span>${option}</span>
+                    `;
+                    
+                    answerDiv.addEventListener('click', function() {
+                        // 移除其他选项的选中状态
+                        document.querySelectorAll(`#questionContainer${periodId} .additional-options .answer`).forEach(a => {
+                            a.classList.remove('selected');
+                        });
+                        
+                        // 选中当前选项
+                        this.classList.add('selected');
+                        userAnswers[periodId][`${questionIndex}_additional`] = option;
+                    });
+                    
+                    additionalOptions.appendChild(answerDiv);
+                });
+                
+                additionalDiv.appendChild(additionalOptions);
+                container.appendChild(additionalDiv);
+                
+            } else if (question.type === 'single') {
+                // 单选题
+                const answersContainer = document.createElement('div');
+                answersContainer.className = 'answers';
+                
+                question.options.forEach((option, idx) => {
+                    const answerDiv = document.createElement('div');
+                    answerDiv.className = 'answer';
+                    if (userAnswers[periodId][questionIndex] === option) {
+                        answerDiv.classList.add('selected');
+                    }
+                    
+                    answerDiv.innerHTML = `
+                        <span class="answer-letter">${String.fromCharCode(65 + idx)}</span>
+                        <span>${option}</span>
+                    `;
+                    
+                    answerDiv.addEventListener('click', function() {
+                        // 移除其他选项的选中状态
+                        document.querySelectorAll(`#questionContainer${periodId} .answer`).forEach(a => {
+                            a.classList.remove('selected');
+                        });
+                        
+                        // 选中当前选项
+                        this.classList.add('selected');
+                        userAnswers[periodId][questionIndex] = option;
+                    });
+                    
+                    answersContainer.appendChild(answerDiv);
+                });
+                
+                container.appendChild(answersContainer);
+                
+            } else if (question.type === 'multiple') {
+                // 多选题
+                const answersContainer = document.createElement('div');
+                answersContainer.className = 'answers';
+                
+                question.options.forEach((option, idx) => {
+                    const answerDiv = document.createElement('div');
+                    answerDiv.className = 'answer checkbox-answer';
+                    
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.id = `period${periodId}_q${questionIndex}_opt${idx}`;
+                    checkbox.checked = userAnswers[periodId][questionIndex] && 
+                                      userAnswers[periodId][questionIndex].includes(String.fromCharCode(65 + idx));
+                    
+                    checkbox.addEventListener('change', function() {
+                        if (!userAnswers[periodId][questionIndex]) {
+                            userAnswers[periodId][questionIndex] = [];
+                        }
+                        
+                        const letter = String.fromCharCode(65 + idx);
+                        if (this.checked) {
+                            if (!userAnswers[periodId][questionIndex].includes(letter)) {
+                                userAnswers[periodId][questionIndex].push(letter);
+                            }
+                        } else {
+                            userAnswers[periodId][questionIndex] = userAnswers[periodId][questionIndex].filter(l => l !== letter);
+                        }
+                    });
+                    
+                    const label = document.createElement('label');
+                    label.className = 'checkbox-label';
+                    label.htmlFor = `period${periodId}_q${questionIndex}_opt${idx}`;
+                    label.innerHTML = option;
+                    
+                    answerDiv.appendChild(checkbox);
+                    answerDiv.appendChild(label);
+                    answersContainer.appendChild(answerDiv);
+                });
+                
+                container.appendChild(answersContainer);
+                
+            } else if (question.type === 'truefalse') {
+                // 判断题
+                const answersContainer = document.createElement('div');
+                answersContainer.className = 'answers';
+                
+                const trueDiv = document.createElement('div');
+                trueDiv.className = 'answer';
+                if (userAnswers[periodId][questionIndex] === true) {
+                    trueDiv.classList.add('selected');
+                }
+                trueDiv.innerHTML = '<span class="answer-letter">√</span><span>正确</span>';
+                trueDiv.addEventListener('click', function() {
+                    document.querySelectorAll(`#questionContainer${periodId} .answer`).forEach(a => {
+                        a.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                    userAnswers[periodId][questionIndex] = true;
+                });
+                
+                const falseDiv = document.createElement('div');
+                falseDiv.className = 'answer';
+                if (userAnswers[periodId][questionIndex] === false) {
+                    falseDiv.classList.add('selected');
+                }
+                falseDiv.innerHTML = '<span class="answer-letter">×</span><span>错误</span>';
+                falseDiv.addEventListener('click', function() {
+                    document.querySelectorAll(`#questionContainer${periodId} .answer`).forEach(a => {
+                        a.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                    userAnswers[periodId][questionIndex] = false;
+                });
+                
+                answersContainer.appendChild(trueDiv);
+                answersContainer.appendChild(falseDiv);
+                container.appendChild(answersContainer);
+            }
+            
+            // 更新按钮状态
+            updateButtonStates(periodId, questionIndex);
+        }
+
+        // 更新按钮状态
+        function updateButtonStates(periodId, questionIndex) {
+            const periodData = quizData[`period${periodId}`];
+            const totalQuestions = periodData.length;
+            
+            // 上一题按钮
+            const prevBtn = document.getElementById(`prevBtn${periodId}`);
+            if (questionIndex > 0) {
+                prevBtn.disabled = false;
+            } else {
+                prevBtn.disabled = true;
+            }
+            
+            // 下一题/检查答案按钮
+            const nextBtn = document.getElementById(`nextBtn${periodId}`);
+            if (questionIndex < totalQuestions - 1) {
+                nextBtn.textContent = '下一题';
+                nextBtn.innerHTML = '下一题 <i class="fas fa-arrow-right"></i>';
+            } else if (periodId < 3) {
+                nextBtn.textContent = '进入下一轮';
+                nextBtn.innerHTML = '进入下一轮 <i class="fas fa-arrow-right"></i>';
+            } else {
+                nextBtn.textContent = '查看结果';
+                nextBtn.innerHTML = '查看结果 <i class="fas fa-flag-checkered"></i>';
+            }
+        }
+
+        // 检查答案
+        function checkAnswer(periodId, questionIndex) {
+            const periodData = quizData[`period${periodId}`];
+            const question = periodData[questionIndex];
+            const userAnswer = userAnswers[periodId][questionIndex];
+            const explanationContent = document.getElementById(`explanationContent${periodId}`);
+            const explanation = document.getElementById(`explanation${periodId}`);
+            const container = document.getElementById(`questionContainer${periodId}`);
+            
+            let isCorrect = false;
+            let additionalIsCorrect = false;
+            
+            // 根据题目类型检查答案
+            if (question.type === 'text') {
+                const correct = question.correctAnswer;
+                isCorrect = userAnswer && userAnswer.toLowerCase() === correct.toLowerCase();
+                
+                // 高亮显示输入框
+                const input = container.querySelector('input');
+                if (input) {
+                    if (isCorrect) {
+                        input.style.borderColor = '#2E8B57';
+                        input.style.boxShadow = '0 0 10px rgba(46, 139, 87, 0.3)';
+                    } else {
+                        input.style.borderColor = '#B22222';
+                        input.style.boxShadow = '0 0 10px rgba(178, 34, 34, 0.3)';
+                    }
+                }
+                
+            } else if (question.type === 'textWithAdditional') {
+                const correct = question.correctAnswer;
+                isCorrect = userAnswer && userAnswer.toLowerCase() === correct.toLowerCase();
+                
+                // 高亮显示输入框
+                const input = container.querySelector('.text-input');
+                if (input) {
+                    if (isCorrect) {
+                        input.style.borderColor = '#2E8B57';
+                        input.style.boxShadow = '0 0 10px rgba(46, 139, 87, 0.3)';
+                    } else {
+                        input.style.borderColor = '#B22222';
+                        input.style.boxShadow = '0 0 10px rgba(178, 34, 34, 0.3)';
+                    }
+                }
+                
+                // 检查附加问题
+                const additionalCorrect = question.additionalCorrect;
+                const additionalUserAnswer = userAnswers[periodId][`${questionIndex}_additional`];
+                additionalIsCorrect = additionalUserAnswer === additionalCorrect;
+                
+                // 高亮显示附加选项
+                const additionalAnswers = container.querySelectorAll('.additional-options .answer');
+                additionalAnswers.forEach(answer => {
+                    const answerText = answer.querySelector('span:not(.answer-letter)').textContent;
+                    if (answerText === additionalCorrect) {
+                        answer.classList.add('correct');
+                    } else if (answerText === additionalUserAnswer && !additionalIsCorrect) {
+                        answer.classList.add('incorrect');
+                    }
+                });
+                
+            } else if (question.type === 'single') {
+                const correct = question.correctAnswer;
+                isCorrect = userAnswer === correct;
+                
+                // 高亮显示选项
+                const answers = container.querySelectorAll('.answer');
+                answers.forEach(answer => {
+                    const answerText = answer.querySelector('span:not(.answer-letter)').textContent;
+                    if (answerText === correct) {
+                        answer.classList.add('correct');
+                    } else if (answerText === userAnswer && !isCorrect) {
+                        answer.classList.add('incorrect');
+                    }
+                });
+                
+            } else if (question.type === 'multiple') {
+                const correct = question.correctAnswers;
+                const user = userAnswer || [];
+                
+                // 对于多选题，只有当所有正确选项都被选中且没有错误选项时才正确
+                isCorrect = correct.length === user.length && 
+                           correct.every(letter => user.includes(letter));
+                
+                // 高亮显示选项
+                const checkboxes = container.querySelectorAll('.checkbox-answer');
+                checkboxes.forEach((checkbox, idx) => {
+                    const letter = String.fromCharCode(65 + idx);
+                    const label = checkbox.querySelector('.checkbox-label');
+                    
+                    if (correct.includes(letter)) {
+                        checkbox.classList.add('correct');
+                    } else if (user && user.includes(letter)) {
+                        checkbox.classList.add('incorrect');
+                    }
+                });
+                
+            } else if (question.type === 'truefalse') {
+                const correct = question.correctAnswer;
+                isCorrect = userAnswer === correct;
+                
+                // 高亮显示选项
+                const answers = container.querySelectorAll('.answer');
+                answers.forEach(answer => {
+                    const isTrue = answer.textContent.includes('正确');
+                    if ((isTrue && correct) || (!isTrue && !correct)) {
+                        answer.classList.add('correct');
+                    } else if ((isTrue && userAnswer === true && !correct) || 
+                              (!isTrue && userAnswer === false && correct)) {
+                        answer.classList.add('incorrect');
+                    }
+                });
+            }
+            
+            // 更新分数
+            if (isCorrect) {
+                scores[periodId]++;
+            }
+            if (additionalIsCorrect) {
+                scores[periodId]++;
+            }
+            
+            // 显示解析
+            explanationContent.innerHTML = question.explanation;
+            explanation.classList.add('active');
+            
+            // 滚动到解析位置
+            explanation.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            return isCorrect;
+        }
+
+        // 设置事件监听器
+        function setupEventListeners() {
+            // 上一题按钮
+            document.querySelectorAll('[id^="prevBtn"]').forEach(btn => {
+                const periodId = btn.id.replace('prevBtn', '');
+                btn.addEventListener('click', function() {
+                    if (currentQuestions[periodId] > 0) {
+                        currentQuestions[periodId]--;
+                        loadQuestion(periodId, currentQuestions[periodId]);
+                        updateProgress();
+                    }
+                });
+            });
+            
+            // 下一题按钮
+            document.querySelectorAll('[id^="nextBtn"]').forEach(btn => {
+                const periodId = btn.id.replace('nextBtn', '');
+                btn.addEventListener('click', function() {
+                    const periodData = quizData[`period${periodId}`];
+                    const totalQuestions = periodData.length;
+                    
+                    if (currentQuestions[periodId] < totalQuestions - 1) {
+                        currentQuestions[periodId]++;
+                        loadQuestion(periodId, currentQuestions[periodId]);
+                    } else if (periodId < 3) {
+                        // 进入下一轮
+                        switchPeriod(parseInt(periodId) + 1);
+                    } else {
+                        // 显示结果
+                        showResults();
+                    }
+                    
+                    updateProgress();
+                });
+            });
+            
+            // 检查答案按钮
+            document.querySelectorAll('[id^="checkBtn"]').forEach(btn => {
+                const periodId = btn.id.replace('checkBtn', '');
+                btn.addEventListener('click', function() {
+                    checkAnswer(periodId, currentQuestions[periodId]);
+                });
+            });
+            
+            // 重新开始按钮
+            document.getElementById('restartBtn').addEventListener('click', function() {
+                // 重置状态
+                currentPeriod = 1;
+                currentQuestions = {1: 0, 2: 0, 3: 0};
+                userAnswers = {1: {}, 2: {}, 3: {}};
+                scores = {1: 0, 2: 0, 3: 0};
+                
+                // 隐藏结果，显示第一轮
+                document.getElementById('resultContainer').classList.remove('active');
+                switchPeriod(1);
+                
+                // 重置进度条
+                updateProgress();
+            });
+        }
+
+        // 显示结果
+        function showResults() {
+            // 计算总分
+            const totalScore = scores[1] + scores[2] + scores[3];
+            const maxScore = 16; // 总题目数
+            
+            // 更新分数显示
+            document.getElementById('finalScore').textContent = totalScore;
+            
+            // 隐藏quiz容器，显示结果
+            document.getElementById(`period${currentPeriod}`).classList.remove('active');
+            document.getElementById('resultContainer').classList.add('active');
+        }
+
+        // 更新进度条
+        function updateProgress() {
+            const periodData = quizData[`period${currentPeriod}`];
+            const totalQuestions = periodData.length;
+            const currentQuestion = currentQuestions[currentPeriod] + 1;
+            
+            // 更新进度条宽度
+            const progressPercent = (currentQuestion / totalQuestions) * 100;
+            document.getElementById('progressFill').style.width = `${progressPercent}%`;
+            
+            // 更新进度文本
+            document.getElementById('progressText').textContent = 
+                `第${currentQuestion}题/共${totalQuestions}题`;
+        }
+    </script>
+</body>
+</html>
